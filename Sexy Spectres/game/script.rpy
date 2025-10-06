@@ -69,7 +69,7 @@ label start:
     "I rinse my face off, sighing. Another day alone at home."
     scene bg srnight
     with fade
-    play music "bgmusic.mp3"
+    play music "bgmusic.mp3" volume 1.5
 
     "I scroll through my phone, settling down on the couch."
     "An hour slips away."
@@ -799,7 +799,7 @@ label mori_conversations:
         $ mori_first = False
 
         show mori neutral
-        with fade
+        with dissolve
         "I look around before approaching the fanged woman."
         
         m "Oh, huh. Me?"
@@ -815,6 +815,8 @@ label mori_conversations:
         m "Fire away, [name]."
 
     else:
+        show mori neutral
+        with dissolve
         "I return to Mori, pep in my step as I approach her. It could be my imagination, but she seems to perk up ever so slightly."
 
     menu:
@@ -974,6 +976,283 @@ label mori_conversations:
             mc "Y-Yeah, all good."
 
             $ q3_m_tbd = False
+
+            if day_one and is_day:
+                jump evening1
+            
+            elif day_one:
+                jump day2
+            
+            elif day_two and is_day:
+                jump evening2
+
+            elif day_two:
+                jump day3
+            
+            elif day_three and is_day:
+                jump evening3
+            
+            elif day_three:
+                jump finalday
+            
+            else:
+                "How did we get here?"
+
+label erasmos_conversations:
+
+    $ not_talked_to_erasmos = False
+
+    if is_day:
+        scene bg srday 
+        with dissolve
+    
+    else: 
+        scene bg srnight
+        with dissolve
+    
+    if erasmos_first:
+        $ erasmos_first = False
+
+        show erasmos neutral
+        with dissolve
+
+        "I walk over to the man draped in cloth."
+
+        mc "Hey. I'm [name]!"
+
+        "I extend my hand toward him, trying to offer it."
+
+        "He glances at my hand, then back to me. He seems uncertain, almost wary."
+
+        e "Greetings."
+
+        "He pauses, eyes flicking away for a moment. Silence fills the air."
+
+        e "My name was already spoken. Your hand… is something wrong?"
+
+        "A look of confusion crosses his face."
+
+        mc "Oh right.. you probably wouldn't know about that..."
+
+        "I retract my hand, letting it fall down by my side."
+
+        "He clears his throat, fidgeting slightly with the edge of his cloth."
+
+        e "Do you… do you wish to meet my Lissa?"
+
+        mc "Who's Lissa? Another ghost?"
+
+        e "Yes!"
+
+        "He lowers his head slightly, his tone softening. He raises a single finger, toward a small insect resting on his chest. Then with care, he lets it crawl out onto his hand and holds it out toward me."
+
+        e "She’s a Geotrupes stercorarius, an earth-boring dung beetle. Stronger than she seems. Patient… tireless… She turns what is dead into what feeds the living."
+
+        e "I find her most marvellous. She's resourceful and, in her own way… beautiful."
+
+        "He glances at me quickly, then back down at the beetle."
+
+        "As he speaks, a faint smile crosses his face the first you’ve seen from him. But just as quickly as it appears, it fades, and he cuts himself off."
+
+        e "I should stop. I’ve spoken to myself for far too long… I suppose you have questions to ask me?"
+
+        "That you do."
+
+    else:
+        show erasmos neutral
+        with dissolve
+
+        e "Do you have something you want to say? Time isn't infinite you know."
+
+    menu:
+
+        "Tell me more about Lissa!" if q1_e_tbd:
+
+            e "You care to know more? I… I am surprised."
+            
+            e "I have already spoken about her, what more information do you seek?"
+            
+            mc "How did you two become acquainted?"
+            
+            e "She was given to me… long ago, by someone dear to me. When I passed, she followed me. A small thing she is, yet… the greatest gift I could have asked for. She has been my companion ever since."
+
+            mc "That's sweet, she seems to like you a lot too! Who gave her to you?"
+
+            e "Someone I loved in life. But… I would rather not speak his name, if you would not mind. It is enough to say he gave Lissa to me. And for that, I am grateful."
+            
+            mc "She’s kinda cute. Does she help you feel less lonely?"
+
+            e "I mean… I do sometimes feel the sting of loneliness. Lissa… she is quiet company, she does not ask much, and yet… she listens in her own way." 
+
+            e "I can tell she appreciates me. She would not be here after all these years if that was not the case."
+
+            "He pauses, looking hesitantly into my eyes."
+
+            e "Would you… would you mind if I talked some more about her? It is rare that anyone wishes to hear me speak of my darling."
+
+            "Sure thing! I’m all ears."
+
+            "Erasmos brightens, a quiet excitement flickering across his face."
+
+            e "Oh! Good! In my homeland, we used to say even the smallest creature can humble the great. Aesop wrote that a beetle once brought down an eagle. A tale often forgotten."
+            
+            e "When they look at her, they see filth, but I see strength. I do not think it wise to underestimate creatures like her. To make life from what is cast away… it is no small feat."
+
+            mc "I think it’s unwise as well, Erasmos."
+
+            e "You can hold her if you wish. She is quite friendly."
+            
+            mc "I don't know if that's possible… Lissa’s dead too, right?"
+
+            e "Ah… yes. I forget myself, perhaps one day you will."
+
+            e "Not that I wish misfortune upon you! Only that… when time has run its course, it would be nice to meet again."
+            
+            "Erasmos seems a bit panicked at his choice of words."
+            
+            mc "I understand what you mean, Erasmos." 
+            
+            "I chuckle, endeared."
+
+            mc "I would like that, too."
+            
+            "Erasmos smiles, relieved."
+
+            e "Ah. I’m glad."
+
+            $ q1_e_tbd = False
+
+            $ q2_e_tbd = False
+
+            if day_one and is_day:
+                jump evening1
+            
+            elif day_one:
+                jump day2
+            
+            elif day_two and is_day:
+                jump evening2
+
+            elif day_two:
+                jump day3
+            
+            elif day_three and is_day:
+                jump evening3
+            
+            elif day_three:
+                jump finalday
+            
+            else:
+                "How did we get here?"
+        
+        "What were you before you came here?" if q2_e_tbd:
+
+            e "I was in Greece, but it has been so long. The days blur together. All I can remember clearly is that I was… with him."
+
+            e "I cannot speak his name… it pains me too much to even think of it. And I doubt you would have much care to hear of my past."
+
+            "I don't want to pry, but… my curiosity gets the best of me."
+
+            mc "I don't mind. We only have so much time to speak, right? And I want to get to know you."
+
+            "He pauses for a moment."
+
+            e "My past lover… in my time alive, he was who I spent my time with. We spent every waking moment together, I never felt like I belonged anywhere, except when I was with him."
+
+            e "I passed before him and awaited his return. And in due time he came. But… by the time we were together again, he… had found someone new"
+
+            "He trails off as he speaks."
+
+            e "It pained me deeply. I… I did not know what to do without him. All my life I felt unwanted… and without him, I had to learn to find that belonging within myself."
+
+            mc "I’m... sorry to hear that, Erasmos."
+
+            "He quickly jolts his head up."
+
+            e "You need not feel sorrow for me, [name]. Time has softened the grief. I... I can handle it now."
+
+            e "I... I..."
+
+            "Erasmos pauses, a quiet tension in his shoulders, his eyes distant and unblinking."
+
+            e "I... I should stop. It seems that I am not used to sharing this much with others. My apologies, [name]."
+
+            mc "Dont worry Erasmos! Please, it's fine."
+
+            e "I should go now, I think I need a moment to myself. Farewell for now."
+
+            $ q2_e_tbd = False
+
+            if day_one and is_day:
+                jump evening1
+            
+            elif day_one:
+                jump day2
+            
+            elif day_two and is_day:
+                jump evening2
+
+            elif day_two:
+                jump day3
+            
+            elif day_three and is_day:
+                jump evening3
+            
+            elif day_three:
+                jump finalday
+            
+            else:
+                "How did we get here?"
+
+        "What is that belt that you are wearing?" if q3_e_tbd:
+
+            e "My belt? It is just a piece of fabric to hold my clothing together."
+            
+            mc "I mean the gem, mostly. It looks interesting!"
+
+            e "Oh, it is a bug encased in amber."
+            
+            mc "Hm?"
+            
+            e "If you wish to know more about it, you must speak clearly about what you wish to know. I do not do well with assuming one's intentions."
+            
+            mc "What type of bug is it, why that bug specifically. That sort of thing, y’know?"
+            
+            "Erasmos looks surprised."
+
+            e "Oh! I did not assume you wished to know all those details. In that case, I am happy to oblige."
+
+            e "Encased in this amber is a moth. She was small… fragile. I remember her still. She was crushed beneath the heel of a fool who did not even notice her presence..." 
+            
+            "Erasmos sighs, pained at the thought."
+
+            e "Most do not notice such things. They walk through life seeing only what shines, not what breathes quietly beneath their feet."
+
+            "He pauses, his gaze distant."
+
+            e "I found her after. Wings torn, body still warm. I could not bear to see her lost to the dust, so I preserved her."
+        
+            e "A small kindness for a small life. Perhaps it was foolish, but I like to remember what others forget."
+            
+            "He runs a thumb slowly over the amber, voice softening."
+
+            e "People overlook the small things. The fragile things. Yet they are what make the world whole. I suppose that is why I keep her with me."
+
+            e "As a reminder that even the smallest life deserves to be remembered."
+
+            "I pause for a moment, unsure what to say."
+
+            e "Oh forgive me! For rambling on too long, I did not mean to."
+            
+            mc "No no, it's alright, Erasmos. It's nice to hear your perspective on things, I mean, that's why we’re talking, isn't it?"
+            
+            e "I suppose so."
+
+            "He gives a small, fleeting smile, the kind that fades before it has the chance to fully form."
+
+            $ q3_e_tbd = False
+
+            $ q2_e_tbd = False
 
             if day_one and is_day:
                 jump evening1
