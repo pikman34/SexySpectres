@@ -1,9 +1,4 @@
-﻿# The script of the game goes in this file.
-
-# Declare characters used by this game. The color argument colorizes the
-# name of the character.
-
-define j = Character("Jamie Quinn", color="#ffff7d")
+﻿define j = Character("Jamie Quinn", color="#ffff7d")
 define m = Character("Mori", color="#256f00")
 define e = Character("Erasmos", color="#ae4927")
 define c = Character("Clara", color="#77b3fe")
@@ -38,14 +33,11 @@ transform slightright:
 transform center:
     yalign 1.0
     linear 1.0 xalign 0.5
-    
-
-# The game starts here.
 
 label start:
 
     play sound "alarmclock.mp3" volume 2.0
-    scene bg srday #replace with bedroom
+    scene bg bedroom
     with fadehold
 
     "As usual, I’m woken by my harsh, blaring alarm."
@@ -77,6 +69,7 @@ label start:
     "I rinse my face off, sighing. Another day alone at home."
     scene bg srnight
     with fade
+    play music "bgmusic.mp3"
 
     "I scroll through my phone, settling down on the couch."
     "An hour slips away."
@@ -344,7 +337,7 @@ label start:
 
     mc "Night, Jamie"
 
-    scene bg srday #replace with bedroom at night
+    scene bg bedroom
     with fade
     "I slip back into my bedroom, partially relieved but mostly confused."
     "I still don’t recall signing up for any kind of game show, but it seems like too much hassle to fight it."
@@ -360,8 +353,37 @@ label day1:
     $ not_talked_to_jane = True
 
     $ is_day = True
+    $ day_one = True
+    $ day_two = False
+    $ day_three = False
 
-    scene bg srday #replace with bedroom at day
+    $ clara_first = True
+    $ mori_first = True 
+    $ erasmos_first = True
+    $ jamie_first = True
+    $ jane_first = True
+
+    $ q1_c_tbd = True
+    $ q2_c_tbd = True
+    $ q3_c_tbd = True
+
+    $ q1_m_tbd = True
+    $ q2_m_tbd = True
+    $ q3_m_tbd = True
+
+    $ q1_e_tbd = True
+    $ q2_e_tbd = True
+    $ q3_e_tbd = True
+
+    $ q1_j_tbd = True
+    $ q2_j_tbd = True
+    $ q3_j_tbd = True
+
+    $ q1_l_tbd = True
+    $ q2_l_tbd = True
+    $ q3_l_tbd = True
+
+    scene bg bedroom
     with fade
     play sound "<from 0 to 3>alarmclock.mp3" volume 2.0
     j "Rise and shine! Ready to start chatting with everyone?"
@@ -394,6 +416,611 @@ label evening1:
 
     $ is_day = False    
 
-    scene bg srnight #replace with bedroom at night
+    scene bg bedroom
     with fade
+    "Who should I talk to tonight?"
+
+    menu: 
+
+        "Clara" if not_talked_to_clara:
+            jump clara_conversations
+        
+        "Mori" if not_talked_to_mori:
+            jump mori_conversations
+
+        "Erasmos" if not_talked_to_erasmos:
+            jump erasmos_conversations
+
+        "Lady Jane" if not_talked_to_jane:
+            jump jane_conversations
+
+        "Jamie Quinn" if not_talked_to_jamie:
+            jump jamie_conversations
+
+label day2:
+    $ not_talked_to_clara = True
+    $ not_talked_to_mori = True
+    $ not_talked_to_jamie = True
+    $ not_talked_to_erasmos = True
+    $ not_talked_to_jane = True
+
+    $ day_one = False
+    $ day_two = True
+
+    $ is_day = True
+
+    scene bg bedroom
+    with fade
+    j "Rise and shine, [name]!! Ready for another day getting to know these eligible bachelors?"
+
+    mc "Sure am, Jamie!"
+
+    j "Perfect! [name], choose your bachelor!"
+
     "Who should I talk to?"
+
+    menu: 
+
+        "Clara" if not_talked_to_clara:
+            jump clara_conversations
+        
+        "Mori" if not_talked_to_mori:
+            jump mori_conversations
+
+        "Erasmos" if not_talked_to_erasmos:
+            jump erasmos_conversations
+
+        "Lady Jane" if not_talked_to_jane:
+            jump jane_conversations
+
+        "Jamie Quinn" if not_talked_to_jamie:
+            jump jamie_conversations
+
+label evening2:
+
+    $ is_day = False    
+
+    scene bg bedroom
+    with fade
+    "Who should I talk to tonight?"
+
+    menu: 
+
+        "Clara" if not_talked_to_clara:
+            jump clara_conversations
+        
+        "Mori" if not_talked_to_mori:
+            jump mori_conversations
+
+        "Erasmos" if not_talked_to_erasmos:
+            jump erasmos_conversations
+
+        "Lady Jane" if not_talked_to_jane:
+            jump jane_conversations
+
+        "Jamie Quinn" if not_talked_to_jamie:
+            jump jamie_conversations
+
+label day3:
+    $ not_talked_to_clara = True
+    $ not_talked_to_mori = True
+    $ not_talked_to_jamie = True
+    $ not_talked_to_erasmos = True
+    $ not_talked_to_jane = True
+
+    $ day_two = False
+    $ day_three = True
+
+    $ is_day = True
+
+    scene bg bedroom
+    with fade
+    j "Mornin’!! Are you ready for the home stretch?!"
+
+    mc "Ready as I'll ever be."
+
+    j "There's that enthusiasm!!"
+
+    "Who should I talk to?"
+
+    menu: 
+
+        "Clara" if not_talked_to_clara:
+            jump clara_conversations
+        
+        "Mori" if not_talked_to_mori:
+            jump mori_conversations
+
+        "Erasmos" if not_talked_to_erasmos:
+            jump erasmos_conversations
+
+        "Lady Jane" if not_talked_to_jane:
+            jump jane_conversations
+
+        "Jamie Quinn" if not_talked_to_jamie:
+            jump jamie_conversations
+
+label evening3:
+
+    $ is_day = False    
+
+    scene bg bedroom
+    with fade
+    "Who should I talk to tonight?"
+
+    menu: 
+
+        "Clara" if not_talked_to_clara:
+            jump clara_conversations
+        
+        "Mori" if not_talked_to_mori:
+            jump mori_conversations
+
+        "Erasmos" if not_talked_to_erasmos:
+            jump erasmos_conversations
+
+        "Lady Jane" if not_talked_to_jane:
+            jump jane_conversations
+
+        "Jamie Quinn" if not_talked_to_jamie:
+            jump jamie_conversations
+
+label jamie_conversations:
+
+    $ not_talked_to_jamie = False
+
+    if is_day:
+        scene bg srday 
+        with dissolve
+    
+    else: 
+        scene bg srnight
+        with dissolve
+    
+    if jamie_first:
+        $ jamie_first = False
+
+        "I walk over to where Jamie’s voice seemed the loudest and call out their name."
+
+        j "Hey! Do you have any questions about the game?!"
+
+        mc "Not exactly... I had questions for you!"
+
+        j "W-What?! No no no. I’m not one of the contestants! No need to talk to me."
+
+        mc "But I have questions to ask you?"
+
+        j "I- um-"
+
+        "Jamies pauses for a moment. They almost seem lost."
+
+        j "There's no need to speak to {i}me{/i} when we have all those lovely comprehensible ghosts over there just {i}waitin'{/i} to be spoken to!"
+
+        mc "So, am I not {i}allowed{/i} to speak to you?"
+
+        j "Oh, well... you can if you really want to."
+
+    else:
+
+        "I walk over to Jamie again, and against their best wishes inted to ask them another question."
+    
+    menu:
+
+        "Why can't I see you?" if q1_j_tbd:
+            
+            j "I don't know!"
+
+            mc "You don't know?"
+
+            j "Yup!"
+
+            mc "I don't believe you."
+
+            j "Why not?"
+
+            mc "You’re telling me that you’re, like, a floating voice and you know absolutely NOTHING about why?"
+
+            j "Yes!"
+
+            mc "Haven’t you maybe…. TRIED? To figure it out?"
+
+            j "No!"
+
+            mc "Why…?"
+
+            j "Why should I! Whatever it is, I don't wanna worry about it."
+
+            j "All I need to worry about is makin’ sure you five are having a good time!"
+
+            mc "Well if it makes you feel any better, this is pretty entertaining for me."
+
+            "Jamie, enthusiastic as ever, begins to squeal."
+
+            j "YES!! That is exactly why I do this. If I had a physical form I would hug you right now, I swear!"
+
+            mc "The thought of not having a physical form is… really interesting. I honestly can't even imagine what it must be like."
+
+            mc "Do you remember what it was like to have a physical form?"
+
+            j "Nope! To be honest, I don't remember much of anything from my past."
+
+            mc "I see… then what makes you think you even want a physical form?"
+
+            j "I mean, c'mon! I see people show affection for each other all the time, it would be nice to know what it actually feels like."
+
+            mc "I get that, you can do a lot with words though. But I do hope one day you can learn what it feels like."
+
+            j "T-Thanks…! For um, thanks for that. But… I really think you should just stick to talkin’ to the others! We have a great line up prepared, y'know?"
+
+            mc "I’ll try."
+
+            $ q1_j_tbd = False
+
+            if day_one and is_day:
+                jump evening1
+            
+            elif day_one:
+                jump day2
+            
+            elif day_two and is_day:
+                jump evening2
+
+            elif day_two:
+                jump day3
+            
+            elif day_three and is_day:
+                jump evening3
+            
+            elif day_three:
+                jump finalday
+            
+            else:
+                "How did we get here?"
+            
+        "Why is this a... game show?" if q2_j_tbd:
+           
+            j "Why wouldn't it be?! Everyone deserves to see love unfold tonight!"
+            
+            mc "I guess? But there aren't any cameras, or anything you would need to make an ACTUAL game show?"
+            
+            j "We have a host, a stage, and five single and ready to mingle bachelors! We have MORE than enough!"
+            
+            mc "But why keep up the act of a gameshow? You keep referring to \"seasons,\" and an “audience,” but..."
+
+            mc "If none of that actually exists, what's the point in keeping this whole shtick up?"
+            
+            "Jamie pauses for a moment. For a moment, it seems like they’ve stopped talking."
+
+            j "I don't..." 
+
+            "They struggle to find their words."
+
+            j "To be honest, I don't really… know. I just have a strong urge to entertain others, I guess. Where that spark comes from is beyond me."
+            
+            j "You would be surprised to hear, but it's hard to actually host a TV show when you’re a ghost without a physical form."
+
+            mc "I didn't think about it like that... I’d say you’re doing a pretty good job, Jamie."
+            
+            j "Thanks, [name]! That means more than you could know. You’re a real sweetheart."
+
+            $ q2_j_tbd = False
+
+            if day_one and is_day:
+                jump evening1
+            
+            elif day_one:
+                jump day2
+            
+            elif day_two and is_day:
+                jump evening2
+
+            elif day_two:
+                jump day3
+            
+            elif day_three and is_day:
+                jump evening3
+            
+            elif day_three:
+                jump finalday
+            
+            else:
+                "How did we get here?"
+
+        "How did you die?" if q3_j_tbd:
+
+            j "Jeez, at least take me out for a drink, first! Don't you know it's rude to ask someone how they died?"
+            
+            mc "I didn't-"
+
+            j "Wait, how would you know… no, there’s literally no way you could know that. Sorry, [name], don't sweat it!"
+
+            mc "I wasn’t-"
+
+            mc "I’ll just explain anyway! It isn't really a big deal to me, y’know? Though for myself… I don't really know." 
+            
+            j "I’ve pondered it y'know? I feel relatively at peace, so maybe… old age? Or maybe it has something to do with why I don't have a physical form."
+            
+            j "But honestly, knowing how I died isn't really important for me to do what I want to do."
+            
+            mc "Which is?"
+            
+            j "Ensurin’ you all find the love of your afterlives! One way or another."
+            
+            mc "I mean my opinion is that I don’t think the cause was old age."
+            
+            j "Hm? What makes you say that?"
+            
+            mc "I mean, I don't think someone who died of old age would have the amount of energy you have. And you don't even sound sure of yourself when you say that?"
+            
+            j "Well I just assumed… I can't see myself, so I don't really know. You can usually tell how you died by looking at your body."
+            
+            mc "What made you assume it was old age then?"
+            
+            j "Apparently when you die of old age you feel at ease, or so I've been told! And I would like to believe that I lived a long life that ended with ease."
+            
+            mc "That does sound nice…"
+
+            $ q3_j_tbd = False
+
+            if day_one and is_day:
+                jump evening1
+            
+            elif day_one:
+                jump day2
+            
+            elif day_two and is_day:
+                jump evening2
+
+            elif day_two:
+                jump day3
+            
+            elif day_three and is_day:
+                jump evening3
+            
+            elif day_three:
+                jump finalday
+            
+            else:
+                "How did we get here?"
+
+label mori_conversations:
+
+    $ not_talked_to_mori = False
+
+    if is_day:
+        scene bg srday 
+        with dissolve
+    
+    else: 
+        scene bg srnight
+        with dissolve
+    
+    if mori_first:
+        $ mori_first = False
+
+        show mori neutral
+        with fade
+        "I look around before approaching the fanged woman."
+        
+        m "Oh, huh. Me?"
+        
+        mc "Is there a reason I shouldn’t talk to you?"
+
+        "Mori snorts, fidgeting with the cork on her bottle."
+        
+        m "Nah, I guess not. Just not real used to being approached."
+        
+        mc "Well, you’re interesting. Mind if I ask you something?"
+        
+        m "Fire away, [name]."
+
+    else:
+        "I return to Mori, pep in my step as I approach her. It could be my imagination, but she seems to perk up ever so slightly."
+
+    menu:
+
+        "What’s with the… fangs? Jamie said that you’re a vampire?" if q1_m_tbd:
+
+            m "What, are you scared?"
+
+            "She seems to be mocking me, but there’s an inexplicable kindness to it."
+
+            mc "Not scared, no. Just wondering."
+
+            m "... right. Yeah, I’m a vampire."
+
+            "She prods at one of her fangs, grinning."
+
+            "I squint at them."
+
+            mc "They’re not... like, plastic?"
+
+            m "What?! Hell no. I can give you a demonstration if you’d like."
+
+            mc "A-Ah, uh… I think I’m good for now."
+
+            m "Suit yourself."
+
+            "She saunters off, walking through my wooden door like it’s nothing but air."
+
+            "Is she upset with me?"
+
+            "I guess it {i}was{/i} kinda rude of me, though..."
+
+            $ q1_m_tbd = False
+
+            if day_one and is_day:
+                jump evening1
+            
+            elif day_one:
+                jump day2
+            
+            elif day_two and is_day:
+                jump evening2
+
+            elif day_two:
+                jump day3
+            
+            elif day_three and is_day:
+                jump evening3
+            
+            elif day_three:
+                jump finalday
+            
+            else:
+                "How did we get here?"
+
+        "What brings you here?" if q2_m_tbd:
+
+            m "To where? Your house, the afterlife, where?"
+
+            mc "Uh… the game show, I guess?"
+
+            m "Oh, that..."
+
+            "She grimaces to herself, letting out a scoff."
+
+            m "Dunno. Felt like I should start looking for someone, I guess?"
+
+            mc "Ha, fair enough!"
+            
+            m "... what about you?"
+
+            "Her voice softens ever so slightly, as though she fears the answer."
+
+            mc "Me? Huh, I… don’t really know, I guess. Just looking for love, same as you."
+
+            m "Is that so..?"
+
+            mc "Are you judging?!"
+
+            m "Me? Nah. You just, I’unno. Seems like you’ve got it all together."
+
+            mc "Oh god no."
+
+            "She laughs, not her usual snort. I can’t fight the grin etching itself across my face."
+
+            mc "What? Just saying..."
+
+            m "You’re funny. I like that."
+
+            mc "Is that so?"
+
+            "She nods, smiling back in turn."
+
+            $ q2_m_tbd = False
+
+            if day_one and is_day:
+                jump evening1
+            
+            elif day_one:
+                jump day2
+            
+            elif day_two and is_day:
+                jump evening2
+
+            elif day_two:
+                jump day3
+            
+            elif day_three and is_day:
+                jump evening3
+            
+            elif day_three:
+                jump finalday
+            
+            else:
+                "How did we get here?"
+        
+        "How did you die?" if q3_m_tbd:
+
+            m "Y’know it’s rude to ask a lady how she died, don’t you?"
+            
+            mc "Oh, sorry. Uh, let me think of something else to..."
+
+            m "Nah, all good. Everyone rots, yeah?"
+
+            mc "I-I guess so."
+
+            m "How I died, oh man..."
+
+            "She lets out an unsettling giggle."
+
+            m "Well, back when I was human, y’know..."
+
+            mc "You were human? But I thought-"
+
+            m "Shh! I’m getting to it."
+
+            m "So, I had to do a ritual to properly transform, yeah?"
+
+            mc "Is that where the..?"
+
+            "I gesture vaguely to the hole in her chest, unsure how to phrase it politely."
+
+            m "Yup. I had to put a stake through my heart."
+
+            mc "... doesn't that kill vampires?"
+
+            "I stare at her in disbelief, unsure how exactly to parse the information."
+
+            m "I mean, yeah, but... whatever, [name]!"
+
+            m "I’m a vampire now, so it all worked out, yeah?"
+
+            "She stares expectantly at me, so I decide to nod."
+
+            m "Yeah, see? All good."
+
+            mc "Y-Yeah, all good."
+
+            $ q3_m_tbd = False
+
+            if day_one and is_day:
+                jump evening1
+            
+            elif day_one:
+                jump day2
+            
+            elif day_two and is_day:
+                jump evening2
+
+            elif day_two:
+                jump day3
+            
+            elif day_three and is_day:
+                jump evening3
+            
+            elif day_three:
+                jump finalday
+            
+            else:
+                "How did we get here?"
+
+label finalday:
+
+    scene bg srday 
+    with fade
+    j "Good morning, [name]! Get ready for tonight, because today’s the day you get to pick your perfect match!"
+
+    j "Now, having spoken to our eligible bachelors... [name], who piqued your interest?!"
+
+    j "Which of our four beautiful spectres will you choose to take on a date?!"
+
+    "Who should I choose?"
+
+    menu: 
+
+        "Clara" if clara_once:
+            jump choseclara
+
+        "Mori" if mori_once:
+            jump chosemori
+        
+        "Erasmos" if erasmos_once:
+            jump choseerasmos
+
+        "Lady Jane" if jane_once:
+            jump chosejane
+        
+        "Jamie Quinn" if jamie_once:
+            jump chosejamie
